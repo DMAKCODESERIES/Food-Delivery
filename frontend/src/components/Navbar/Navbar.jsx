@@ -1,9 +1,9 @@
-import "./Navbar.css";
+
 import {assets} from "../../assets/assets";
 import { useState } from "react";
+import  PropTypes  from 'prop-types';
 
-
-const Navbar = () => {
+const Navbar = ({setShowLogIn}) => {
   const [isActive, setIsActive] = useState("Home")
   const [basketCount, setBasketCount] = useState(0);
   const handleMenuClick = (menu) => {
@@ -28,20 +28,20 @@ const Navbar = () => {
       </div>
       <div>
         <a
-          href="#about"
+          href="#exploreMenu"
           onClick={() => handleMenuClick('about')}
           className={` ${isActive === 'about' ? 'font-bold text-blue-500' : 'hover:text-gray-400'}`}
         >
-          About
+          Menu
         </a>
       </div>
       <div>
         <a
-          href="#services"
+          href="#appDawnload"
           onClick={() => handleMenuClick('services')}
           className={` ${isActive === 'services' ? 'font-bold text-blue-500' : 'hover:text-gray-400'}`}
         >
-          Services
+          Mobile App
         </a>
       </div>
       <div>
@@ -70,12 +70,15 @@ const Navbar = () => {
         />
       {/* )} */}
     </div>
-    <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+    <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onClick={() => setShowLogIn(true)}>
         Sign In
     </button>
 </div>
 </div>
   )
 }
+Navbar.propTypes = {
+  setShowLogIn: PropTypes.func.isRequired,
+};
 
 export default Navbar

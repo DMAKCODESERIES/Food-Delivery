@@ -13,7 +13,7 @@ const ExploreMenu = () => {
   };
 
   return (
-    <div className="p-8">
+    <div className="p-8 "id="exploreMenu">
       <h1 className="text-3xl font-bold mb-4 text-center">Explore Our Menu</h1>
       <p className="text-gray-600 text-center mb-6">
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam, adipisci!

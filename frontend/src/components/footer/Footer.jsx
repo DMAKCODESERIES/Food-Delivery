@@ -2,7 +2,7 @@ import { assets } from './../../assets/assets';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-10 px-5">
+    <footer className="bg-gray-800 text-white py-10 px-5" id='contact'>
       <div className="flex flex-col md:flex-row justify-between items-start space-y-8 md:space-y-0 md:space-x-8">
         
         {/* Right Section */}
@@ -22,10 +22,10 @@ const Footer = () => {
         <div>
           <h2 className="text-lg font-semibold mb-4">Company</h2>
           <ul className="space-y-2">
-            <li><a href="#" className="text-gray-300 hover:text-white">About</a></li>
-            <li><a href="#" className="text-gray-300 hover:text-white">Our Team</a></li>
-            <li><a href="#" className="text-gray-300 hover:text-white">Projects</a></li>
-            <li><a href="#" className="text-gray-300 hover:text-white">Terms & Conditions</a></li>
+            <li><a href="#exploreMenu" className="text-gray-300 hover:text-white">About</a></li>
+            <li><a href="/" className="text-gray-300 hover:text-white">Our Team</a></li>
+            <li><a href="/" className="text-gray-300 hover:text-white">Projects</a></li>
+            <li><a href="/" className="text-gray-300 hover:text-white">Terms & Conditions</a></li>
           </ul>
         </div>
 

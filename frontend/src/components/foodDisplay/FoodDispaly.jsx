@@ -21,7 +21,7 @@ const FoodDisplay = () => {
   };
 
   return (
-    <div className="max-w-screen-xl mx-auto px-6 py-8">
+    <div className="max-w-screen-xl mx-auto px-6 py-8" >
       <h1 className="text-4xl font-extrabold text-gray-900 text-center mb-10">
         Top Dishes Near You
       </h1>
