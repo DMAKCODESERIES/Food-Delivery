@@ -81,7 +81,7 @@ const LogInPopUp = ({ setShowLogIn }) => {
             </p>
           ) : (
             <p>
-              Don't have an account?{" "}
+              Dod not have an account?{" "}
               <span
                 className="text-blue-500 cursor-pointer"
                 onClick={() => setCurrentState("SignUp")}

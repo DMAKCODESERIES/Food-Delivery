@@ -1,27 +1,12 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { StoreContext } from "../../../Context/StoreContext";
 import { assets } from "../../assets/assets";
 
 const FoodDisplay = () => {
-  const { food_list } = useContext(StoreContext);
-  const [itemCounts, setItemCounts] = useState({});
-
-  const incrementItem = (id) => {
-    setItemCounts((prevCounts) => ({
-      ...prevCounts,
-      [id]: (prevCounts[id] || 0) + 1,
-    }));
-  };
-
-  const decrementItem = (id) => {
-    setItemCounts((prevCounts) => ({
-      ...prevCounts,
-      [id]: Math.max((prevCounts[id] || 1) - 1, 0),
-    }));
-  };
+  const { food_list, cartItems, addToCart, removeFromCart } = useContext(StoreContext);
 
   return (
-    <div className="max-w-screen-xl mx-auto px-6 py-8" >
+    <div className="max-w-screen-xl mx-auto px-6 py-8">
       <h1 className="text-4xl font-extrabold text-gray-900 text-center mb-10">
         Top Dishes Near You
       </h1>
@@ -39,30 +24,38 @@ const FoodDisplay = () => {
             <div className="p-5">
               <h2 className="text-2xl font-bold text-gray-800">{food.name}</h2>
               <p className="text-gray-600 my-3">{food.description}</p>
-              
-              {/* Increment/Decrement Section and Button Directly Below Description */}
-              <div className="flex justify-between items-center mb-3">
-                <div className="flex items-center">
-                  <img
-                    src={assets.remove_icon_red}
-                    alt="minus_icon"
-                    className="w-7 h-7 cursor-pointer"
-                    onClick={() => decrementItem(food._id)}
-                  />
-                  <span className="mx-3 text-xl">{itemCounts[food._id] || 0}</span>
-                  <img
-                    src={assets.add_icon_green}
-                    alt="add_icon"
-                    className="w-7 h-7 cursor-pointer"
-                    onClick={() => incrementItem(food._id)}
-                  />
-                </div>
-                <p className="text-lg font-semibold text-green-600">${food.price}</p>
-              </div>
 
-              <button className="bg-green-500 text-white py-2 w-full rounded-lg font-medium hover:bg-green-600 transition-colors">
-                Order Now
-              </button>
+              {!cartItems[food._id] ? (
+                <img
+                  onClick={() => addToCart(food._id)}
+                  src={assets.add_icon_white}
+                  alt="add_icon"
+                  className="w-7 h-7 cursor-pointer"
+                />
+              ) : (
+                <div className="flex justify-between items-center mb-3">
+                  <div className="flex items-center">
+                    <img
+                      onClick={() => removeFromCart(food._id)}
+                      src={assets.remove_icon_red}
+                      alt="remove_icon"
+                      className="w-7 h-7 cursor-pointer"
+                    />
+                    <span className="mx-3 text-xl">{cartItems[food._id]}</span>
+                    <img
+                      onClick={() => addToCart(food._id)}
+                      src={assets.add_icon_green}
+                      alt="add_icon"
+                      className="w-7 h-7 cursor-pointer"
+                    />
+                  </div>
+                  <p className="text-lg font-semibold text-green-600">
+                    ${food.price}
+                  </p>
+                </div>
+              )}
+
+             
             </div>
           </div>
         ))}
